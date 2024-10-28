@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-panel {
+    width: 60%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.right-panel {
+    width: 40%;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    color: #800000;
+    text-align: left;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.task-form {
+    background: white;
+    border: 2px solid #800000;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #800000;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 16px);
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #800000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #6b0000;
+}
+
+.tasks-list {
+    margin-top: 20px;
+    max-height: 80vh;
+}
+
+.task {
+    background: white;
+    border: 2px solid #800000;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    position: relative;
+}
+
+.task-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.task-name, .task-deadline, .task-priority {
+    flex: 1;
+}
+
+.task-description {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.delete-btn {
+    cursor: pointer;
+    font-size: 18px;
+    color: #800000;
+}
+
+.progress-container {
+    margin-top: 5px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    position: relative;
+}
+
+.progress-slider {
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #76c7c0;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.progress-slider:hover {
+    opacity: 1;
+}
+
+.progress {
+    height: 100%;
+    background-color: #76c7c0;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.red { background-color: #ff0000; }
+.yellow { background-color: yellow; color: black; }
+.orange { background-color: orange; color: black; }
+.green { background-color: green; }
+
+.progress-percentage {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #800000;
+}

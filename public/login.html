@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f5;
+            background: url('https://img.freepik.com/free-photo/side-view-hands-sticking-yellow-post-it_23-2149362889.jpg?ga=GA1.1.2012456186.1721138342&semt=ais_hybrid') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .login-container {
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 80px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 30px;
+                max-width: 90%;
+            }
+        }
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+                border-radius: 40px;
+            }
+            input, button {
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email">
+                <span id="emailError" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <span id="passwordError" class="error"></span>
+            </div>
+            <button type="submit">Login</button>
+            <br><br>
+            Don't Have An Account?
+            <a href="registration.html"> Register Now</a>
+            <br><br>
+            <a href='forgot.html'>Forgot Password</a>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Clear error messages
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            let isValid = true;
+
+            // Email validation
+            if (!email) {
+                document.getElementById("emailError").textContent = "Email is required";
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById("emailError").textContent = "Enter a valid email address";
+                isValid = false;
+            }
+
+            // Password validation
+            if (!password) {
+                document.getElementById("passwordError").textContent = "Password is required";
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById("passwordError").textContent = "Password must be at least 6 characters";
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate successful login
+                alert("Login successful!");
+                // Redirect to next page (you can change the URL)
+                window.location.href = "index.html";
+            }
+
+            return false; // Prevent form submission
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            background: url('https://img.freepik.com/free-photo/serious-male-designer-focused-screen-laptop-computer-concentrated-analyzing-information-thinks-about-report-distance-job_273609-34350.jpg?ga=GA1.1.2012456186.1721138342&semt=ais_hybrid') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .forgot-password-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            text-align: center;
+            margin-top: 10px;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="forgot-password-container">
+        <h2>Forgot Password</h2>
+        <form id="forgotPasswordForm" onsubmit="return validateEmail()">
+            <div class="form-group">
+                <label for="email">Enter your email address:</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email">
+                <span id="emailError" class="error"></span>
+            </div>
+            <button type="submit">Reset Password</button>
+        </form>
+        <p>Remembered your password? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+        function validateEmail() {
+            // Clear error message
+            document.getElementById("emailError").textContent = "";
+
+            const email = document.getElementById("email").value;
+            let isValid = true;
+
+            // Email validation
+            if (!email) {
+                document.getElementById("emailError").textContent = "Email is required";
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById("emailError").textContent = "Enter a valid email address";
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate successful email submission
+                alert("Password reset link has been sent to your email!");
+                // Redirect to login page or stay on the same page
+                window.location.href = "login.html";  // You can change this to any page you'd like
+            }
+
+            return false; // Prevent form submission
+        }
+    </script>
+
+</body>
+</html>

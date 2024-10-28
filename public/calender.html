@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Calendar</title>
+    <link rel="stylesheet" href="calendar_styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="styled-title">TASK HUB</h1>
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button id="prev-month">❮</button>
+                <h2 id="month-year"></h2>
+                <button id="next-month">❯</button>
+            </div>
+            <div class="weekdays">
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+                <div>Sun</div>
+            </div>
+            <div class="calendar" id="calendar"></div>
+        </div>
+
+        <div class="task-view">
+            <h3>Task List</h3>
+            <div id="task-list"></div>
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Task for <span id="selected-date"></span></h2>
+            <input type="text" id="modal-task" placeholder="Task Description">
+            <button id="modal-add-task-btn">Add Task</button>
+        </div>
+    </div>
+
+    <script src="calender_script.js"></script>
+</body>
+</html>

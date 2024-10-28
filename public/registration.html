@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App - Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://img.freepik.com/free-photo/tablet-computer-men-hands-man-presses-blank-screen-tablet-computer-concept-man-working-from-home-using-tablet-computer-free-space-text-top-view-copy-space_1423-211.jpg?ga=GA1.1.2012456186.1721138342&semt=ais_hybrid') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 80px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+
+        .valid-message {
+            color: green;
+            font-size: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registrationForm" action="/register" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <small class="error-message" id="usernameError"></small>
+                <small class="valid-message" id="usernameValid">Username looks good!</small>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <small class="error-message" id="emailError"></small>
+                <small class="valid-message" id="emailValid">Valid email!</small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <small class="error-message" id="passwordError"></small>
+                <small class="valid-message" id="passwordValid">Strong password!</small>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <small class="error-message" id="confirmPasswordError"></small>
+                <small class="valid-message" id="confirmPasswordValid">Passwords match!</small>
+            </div>
+
+            <button type="submit">Register</button>
+            <br>
+            <br>
+            Already Have An Account?
+            <a href="login.html"> Login Here</a>
+            <br>
+            <br>
+            <a href='forgot.html'>Forgot Password</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            let isValid = true;
+
+            // Username validation (should be at least 3 characters, no special characters)
+            const username = document.getElementById("username").value;
+            const usernameError = document.getElementById("usernameError");
+            const usernameValid = document.getElementById("usernameValid");
+            const usernamePattern = /^[a-zA-Z0-9]{6,}$/;
+            if (!usernamePattern.test(username)) {
+                usernameError.textContent = "Username must be at least 6 characters long and contain only letters and numbers.";
+                usernameError.style.display = "block";
+                usernameValid.style.display = "none";
+                isValid = false;
+            } else {
+                usernameError.style.display = "none";
+                usernameValid.style.display = "block";
+            }
+
+            // Email validation (basic email regex)
+            const email = document.getElementById("email").value;
+            const emailError = document.getElementById("emailError");
+            const emailValid = document.getElementById("emailValid");
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                emailError.textContent = "Please enter a valid email address.";
+                emailError.style.display = "block";
+                emailValid.style.display = "none";
+                isValid = false;
+            } else {
+                emailError.style.display = "none";
+                emailValid.style.display = "block";
+            }
+
+            // Password validation (at least 8 characters, must contain uppercase, lowercase, number, and special character)
+            const password = document.getElementById("password").value;
+            const passwordError = document.getElementById("passwordError");
+            const passwordValid = document.getElementById("passwordValid");
+            const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                passwordError.textContent = "Password must be at least 8 characters long, contain one uppercase letter, one lowercase letter, one number, and one special character.";
+                passwordError.style.display = "block";
+                passwordValid.style.display = "none";
+                isValid = false;
+            } else {
+                passwordError.style.display = "none";
+                passwordValid.style.display = "block";
+            }
+
+            // Confirm password validation (should match the password)
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const confirmPasswordError = document.getElementById("confirmPasswordError");
+            const confirmPasswordValid = document.getElementById("confirmPasswordValid");
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = "Passwords do not match.";
+                confirmPasswordError.style.display = "block";
+                confirmPasswordValid.style.display = "none";
+                isValid = false;
+            } else {
+                confirmPasswordError.style.display = "none";
+                confirmPasswordValid.style.display = "block";
+            }
+
+            if (!isValid) {
+                event.preventDefault();  // Prevent form submission if validation fails
+            }
+        });
+    </script>
+    
+    <script>
+        // Backend server simulation (for demonstration purposes)
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Simple server-side validation simulation
+            if (password === confirmPassword && password.length >= 8) {
+                alert("Registration successful!");
+                window.location.href = "login.html";
+            } else {
+                alert("Registration failed: Please fix the errors.");
+            }
+        });
+    </script>
+
+</body>
+</html>
